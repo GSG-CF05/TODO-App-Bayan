@@ -20,13 +20,24 @@ submit.onclick = function () {
   }
 };
 
-
-
-
-
-
-
-
+// Click On Task Element
+tasksDiv.addEventListener("click", (e) => {
+  // Delete Button
+  if (e.target.classList.contains("del")) {
+    // Remove Task From Local Storage
+    deleteTaskWith(e.target.parentElement.getAttribute("data-id"));
+    // Remove Element From Page
+    e.target.parentElement.remove();
+    
+  }
+  // check button
+  if (e.target.classList.contains("check")) {
+    // Toggle Completed For The Task
+    toggleStatusTaskWith(e.target.parentElement.getAttribute("data-id"));
+    // Toggle Done Class
+    e.target.parentElement.classList.toggle("done");
+  }
+});
 
 
 function addTaskToArray(taskText) {
@@ -111,5 +122,17 @@ function getDataFromLocalStorage() {
 }
 function deleteTaskWith(taskId) {
   arrayOfTasks = arrayOfTasks.filter((task) => task.id != taskId);
+  addDataToLocalStorageFrom(arrayOfTasks);
+}
+
+
+function toggleStatusTaskWith(taskId) {
+  for (let i = 0; i < arrayOfTasks.length; i++) {
+    if (arrayOfTasks[i].id == taskId) {
+      arrayOfTasks[i].completed == false
+        ? (arrayOfTasks[i].completed = true)
+        : (arrayOfTasks[i].completed = false);
+    }
+  }
   addDataToLocalStorageFrom(arrayOfTasks);
 }
