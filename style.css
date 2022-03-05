@@ -109,3 +109,24 @@ h1 {
   cursor: pointer;
   margin: 5px;
 }
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+  .all-page {
+    flex-direction: column;
+  }
+  .all-page img {
+    margin: 10px auto;
+  }
+}
+@media screen and (max-width: 767px) {
+  .all-page {
+    flex-direction: column;
+  }
+  .all-page img {
+    margin: 10px auto;
+  }
+}
+@media screen and (max-width: 544px) {
+  .container {
+    width: 350px;
+  }
+}
